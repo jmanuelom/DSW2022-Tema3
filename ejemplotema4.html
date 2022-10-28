@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul li:hover{
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <ul></ul>
+  
+  <input type="text" name="" id="">
+  <button onClick="anhadir()">Añadir</button>
+  <button onClick="eliminar()">Eliminar</button>
+  <hr>
+  <input type="text" name="" id="textoNuevo">
+  <button onClick="buscar()">Buscar</button>
+  <ul id="copia"></ul>
+  <script>
+    let ul = document.querySelector('ul');
+    let texto = document.querySelector('input');
+    function anhadir(){
+      ul.innerHTML += `
+        <li>${texto.value}</li>
+      `;
+      texto.value = "";
+    }
+    function eliminar(){
+      ul.innerHTML = "";
+    }
+    let ulCopia = document.querySelector('copia');
+    let textoNuevo = document.querySelector('textoNuevo');
+    let lis = document.querySelectorAll('li');
+    function buscar(){
+      let filtradas = [...lis].filter(li => li.textContent.includes(textoNuevo.value));
+      filtradas.forEach(li => ulCopia.innerHTML += `<li>${li}</li>`);
+    }
+
+
+
+  </script>
+  </body>
+</html>
